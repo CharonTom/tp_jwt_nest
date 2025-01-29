@@ -13,6 +13,7 @@ import { UpdateCatDto } from './dto/update-cat.dto';
 import { Cat } from './entities/cat.entity';
 import { Public } from '../auth/decorators/public.decorator';
 
+@Public()
 @Controller('cats')
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
@@ -22,7 +23,6 @@ export class CatsController {
     return this.catsService.create(createCatDto);
   }
 
-  @Public()
   @Get()
   findAll(): Promise<Cat[]> {
     return this.catsService.findAll();
