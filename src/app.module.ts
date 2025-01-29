@@ -11,6 +11,7 @@ import { JwtGuard } from './auth/guards/jwt.guard';
 import { config } from 'process';
 import { CatsModule } from './cats/cats.module';
 import { Cat } from './cats/entities/cat.entity';
+import { UploadfileModule } from './uploadfile/uploadfile.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { Cat } from './cats/entities/cat.entity';
     UsersModule,
     AuthModule,
     CatsModule,
+    UploadfileModule,
   ],
   controllers: [AppController],
   providers: [
