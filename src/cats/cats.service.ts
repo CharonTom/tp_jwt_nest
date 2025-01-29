@@ -13,6 +13,9 @@ import { Cat } from './entities/cat.entity';
 
 @Injectable()
 export class CatsService {
+  findOne(arg0: number) {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     @InjectRepository(Cat)
     private catsRepository: Repository<Cat>,
@@ -33,6 +36,13 @@ export class CatsService {
     }
     await this.catsRepository.update(id, updateCatDto);
     return await this.catsRepository.findOne({ where: { id } });
+  }
+
+  async exportCats(id: number) {
+    const cat = await this.catsRepository.findOne({ where: { id } });
+    if (!cat) {
+      throw new NotFoundException(`Cat with ID ${id} not found`);
+    }
   }
 
   async remove(id: number): Promise<String> {
